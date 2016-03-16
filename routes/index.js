@@ -1,13 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var models = require('../lib/sqlserver');
 var async = require('async');
-var emailer = require('../lib/emailer');
-var multer = require('multer');
-var storage = multer.memoryStorage();
-var upload = multer({ storage: storage });
 var request = require("request");
-var cheerio = require("cheerio");
 
 
 var redis = require("redis"),
@@ -43,9 +37,9 @@ var home = function(req, res, next) {
       cb();
     });
   }, function(cb){
-    var scripts = `<link rel="stylesheet" type="text/css" href="http://localhost:3000/css/hn.css">
-      <script src="http://localhost:3000/socket.io/socket.io.js"></script>
-      <script src="http://localhost:3000/js/hn.js"></script>`;
+    var scripts = `<link rel="stylesheet" type="text/css" href="http://hnlive.xyz/css/hn.css">
+      <script src="http://hnlive.xyz/socket.io/socket.io.js"></script>
+      <script src="http://hnlive.xyz/js/hn.js"></script>`;
     var page = body.replace('</body>', scripts + '</body>');
     //page = page.replace('news.css', 'https://news.ycombinator.com/news.css');
     page = page.replace('<head>', `<head><base href="https://news.ycombinator.com">`);

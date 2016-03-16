@@ -21,8 +21,6 @@ var autoprefixer = require('autoprefixer-stylus');
 
 // routing imports
 var routes = require('./routes/index');
-var views = require('./routes/views');
-var api = require('./routes/api');
 
 // Running a server
 var app = express();
@@ -33,13 +31,15 @@ var io = require('./lib/sockets').listen(http)
 //  console.log(results);
 //});
 
-var minify = require('./lib/minify');
-minify();
-var watch = require('node-watch');
-watch('scripts', { recursive: true, followSymLinks: false }, function(filename) {
-  console.log(filename, ' changed.');
+if (app.get('env') === 'dev') {
+  var minify = require('./lib/minify');
   minify();
-});
+  var watch = require('node-watch');
+  watch('scripts', { recursive: true, followSymLinks: false }, function(filename) {
+    console.log(filename, ' changed.');
+    minify();
+  });
+}
 
 app.use(function(req, res, next) {
     // Set permissive CORS header - this allows this server to be used only as
@@ -62,7 +62,7 @@ app.set('view engine', 'jade');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 logger.format('mydate', function(req, res) {
-  var df = require('console-stamp/node_modules/dateformat');
+  var df = require('./dateformat');
   return df(new Date()).toString().cyan;
 });
 logger.format('mystatus', function(req, res) {
@@ -96,7 +96,6 @@ app.use(stylus.middleware({
 app.use(compression());
 
 var oneDay = 86400000;
-app.use(express.static(path.join(__dirname, 'build'), { maxAge: oneDay*7 }));
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: oneDay*7 }));
 
 //console.log(stylus.middleware({
@@ -111,8 +110,6 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: oneDay*7 }));
 //})+"");
 
 app.use('/', routes);
-app.use('/views', views);
-app.use('/api', api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
