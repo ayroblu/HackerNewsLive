@@ -1,0 +1,15 @@
+extends layout
+
+//- title is provided (should be Socket.IO chat)
+block head
+  link(rel='stylesheet', href='/css/chat.css')
+block content
+  ul#messages
+  form(action="")
+    div.response
+      textarea#m(autocomplete="off")
+      button Send
+block scripts
+  //- script(src="https://cdn.socket.io/socket.io-1.2.0.js")
+  script(src="/socket.io/socket.io.js")
+  script(src="/js/chat.js")

@@ -1,0 +1,91 @@
+extends layout
+
+block head
+  //-link(rel='stylesheet', href='/css/custom/font-awesome/css/font-awesome.min.css')
+  //-link(rel='stylesheet', href='/css/header.css')
+  link(rel='stylesheet', href='/css/index.css')
+
+block content
+  //nav#leftmenu.leftmenu
+  //  div.menuitems
+  //    ul
+  //      li
+  //        a(href="#") Item 1
+  //      li
+  //        a(href="#") Item 2
+  //        ul
+  //          li
+  //            a(href="#") Item 2.1
+  //  div.overhang
+
+  nav#mainnav
+    div.nav.contentmanager
+      a(href="/contentmanager")
+      p Content Manager
+    div.nav.latestdeployment
+      a(href="/")
+      p Latest Deployment
+    div.nav.engagementstatistics
+      a(href="/engagementstatistics")
+      p Engagement Statistics
+    div.nav.profilestats
+      a(href="/profilestats")
+      p Profile Stats
+    figure.showmenu
+      div.circle
+      div.arr.first
+      div.arr.second
+      div.arr.third
+  
+  //- First title object
+  header
+    //-div.logo
+    //-  img(src="/android-chrome-192x192.png")
+    div.logo
+      section.container
+        div(id="cube")
+          figure.front
+            img(src="/img/logo.png")
+          figure.back
+            img(src="/img/logo.png")
+          figure.right
+            img(src="/img/logo.png")
+          figure.left
+            img(src="/img/logo.png")
+          figure.top
+            img(src="/img/logo.png")
+          figure.bottom
+            img(src="/img/logo.png")
+    h2#title #{title}
+  // Then need to show circle with deployed / deployed
+  section#main.main
+  //-div
+  //-  a(href="/") Home
+  //-div
+  //-  a(href="/subpage") Subpage
+  //-div
+  //-  a(href="/nextPage") Next Page
+  //-div
+  //-  a(href="/nextPage/cuteness") Cuteness
+  section#cover.hidden
+      
+
+block scripts
+  //-script(src="/js/custom/polyfills.js")
+  //-script(src="/js/custom/progressbar.min.js")
+  //-script(src="/js/custom/page.min.js")
+  //-script(src="/js/custom/list.min.js")
+  //-script(src="/js/custom/highcharts-standalone-framework.js")
+  //-script(src="/js/custom/highcharts.js")
+  //-script(src="/js/custom/highcharts-exporting.js")
+  //-script(src="/js/custom/async.min.js")
+  //-script(src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=visualization")
+  //-script(src="/js/header.js")
+  //-script(src="/js/index.js")
+  script(src="/js/script.js" async)
+  //- Keep this last to have access to all methods
+  //-script(src="/js/routes.js")
+  
+  //- script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB7iZjAifYGCltTmNWI0yP_dGrKg1Q4Lqg&signed_in=true&libraries=visualization&callback=initMap")
+
+    

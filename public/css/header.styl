@@ -1,0 +1,180 @@
+$cubeheight = 80px
+$navheight = 30px
+$navwidth = 50px
+// Navigation stuff
+//------------------
+nav#mainnav
+  position:fixed
+  top:$cubeheight
+  left:0
+  bottom:0
+  width:$navwidth
+  z-index:2
+
+  div.nav
+    margin-left:(- $navwidth + 10px)
+    width:$navwidth
+    height:$navheight
+    margin-top:20px
+    background:#ffffff
+    transition: margin 0.5s, background 0.5s
+    cursor:pointer
+    box-shadow: 0 0 10px #aaaaaa
+    position:relative
+    a
+      height:100%
+      width:100%
+      display:block
+    p
+      position:absolute
+      top:0
+      left:($navwidth + 20px)
+      bottom:0
+      text-align:left
+      line-height:$navheight
+      margin-left:0
+      visibility:hidden
+      opacity:0
+      transition: opacity 0.5s, margin-left 0.5s, background 0.5s, box-shadow 0.5s
+      padding:0 5px
+      white-space: nowrap
+  div.nav.active,div.nav.active:hover
+    background:#666600
+  div.nav:hover
+    background:#cccc66
+
+
+nav#mainnav div.nav:hover, nav#mainnav.show div.nav
+  margin-left:-30px
+  p
+    visibility:visible
+    opacity:1
+    margin-left:0
+    background:rgba(255,255,255,0.7)
+    //text-shadow: 0 0 10px #fff,0 0 10px #fff,0 0 10px #fff,0 0 10px #fff,0 0 10px #fff, 0 0 10px #fff,0 0 10px #fff,0 0 10px #fff,0 0 10px #fff,0 0 10px #fff
+    box-shadow:0 0 5px 5px rgba(255,255,255,0.7)
+    border-radius:5px
+
+    //-webkit-text-stroke: 1px black
+    //color: white
+    //text-shadow: -1px -1px 1px #ddd,  1px -1px 1px #ddd, -1px 1px 1px #ddd, 1px 1px 1px #ddd;
+
+nav#mainnav
+  figure.showmenu
+    margin-left:15px
+    margin-top:20px
+    position:relative
+    div
+      position:absolute
+      top:0
+      left:0
+    div.circle
+      width:25px
+      height:25px
+      border-radius:50%
+      border:2px solid #eee
+      box-shadow:0 0 10px #888, inset 0 0 3px #cccccc
+      background:none
+      box-sizing:border-box
+      transition:border 0.2s
+    div.arr
+      top:12px
+      height:2px
+      background:#eee
+      border-radius:50% 0 0 50%
+      box-shadow:0 0 2px #888
+      //transition:background 0.2s
+      transition: all 0.4s ease-out;
+    div.arr.first
+      width:12px
+      left:6px
+    div.arr.second
+      width:6px
+      left:13px //cos(pi/8)*15
+      top:14px
+      transform: rotate(-45deg);
+    div.arr.third
+      width:6px
+      left:13px
+      top:10px
+      transform: rotate(45deg);
+  figure.showmenu:hover
+    cursor:pointer
+    div.arr
+      background:#666600
+    div.circle
+      border:2px solid #660
+nav#mainnav.show
+  figure.showmenu
+    div.arr
+      border-radius:30%
+      width:12px
+      top:12px
+      left:7px
+    div.arr.first
+      transform: rotate(-45deg)
+      visibility:hidden
+    div.arr.second
+      transform: rotate(45deg)
+    div.arr.third
+      transform: rotate(-45deg)
+
+// 3D cme stuff
+//--------------
+.container
+  width: $cubeheight
+  height: $cubeheight
+  position: relative
+  perspective: 1000px
+#cube
+  width: 100%
+  height: 100%
+  position: absolute
+  transform: translateZ( -($cubeheight/2) )
+  transform-style: preserve-3d
+  transition: transform 0.5s
+#cube figure
+  display: block
+  position: absolute
+  width: 100%
+  height: 100%
+  border: 1px solid #eeeeee
+  box-sizing:border-box
+  line-height: $cubeheight
+  font-size: ($cubeheight/2)
+  font-weight: bold
+  color: white
+  text-align: center
+  backface-visibility: hidden
+  background:#ffffff
+  cursor:pointer
+  box-shadow:0 0 10px #aaa
+#cube .front
+  transform: rotateY(   0deg ) translateZ( ($cubeheight/2) )
+#cube .back
+  transform: rotateX( 180deg ) translateZ( ($cubeheight/2) )
+#cube .right
+  transform: rotateY(  90deg ) translateZ( ($cubeheight/2) )
+#cube .left
+  transform: rotateY( -90deg ) translateZ( ($cubeheight/2) )
+#cube .top
+  transform: rotateX(  90deg ) translateZ( ($cubeheight/2) )
+#cube .bottom
+  transform: rotateX( -90deg ) translateZ( ($cubeheight/2) )
+#cube.show-front
+  transform: translateZ( -($cubeheight/2) ) rotateY(    0deg )
+#cube.show-back
+  transform: translateZ( -($cubeheight/2) ) rotateX( -180deg )
+#cube.show-right
+  transform: translateZ( -($cubeheight/2) ) rotateY(  -90deg )
+#cube.show-left
+  transform: translateZ( -($cubeheight/2) ) rotateY(   90deg )
+#cube.show-top
+  transform: translateZ( -($cubeheight/2) ) rotateX(  -90deg )
+#cube.show-bottom
+  transform: translateZ( -($cubeheight/2) ) rotateX(   90deg )
+#cube figure:hover
+  background:#eeeeee
+#cube figure:active
+  background:#660
+

@@ -1,0 +1,52 @@
+.relative
+  position:relative
+
+.float
+  position:absolute
+  z-index:1
+  left:0
+  right:0
+  transition:top 1s,margin-left 1s, opacity 1s
+  background-color:rgb(246, 246, 239);
+  opacity:1
+  margin-left:0
+
+.itemlist
+  position:relative
+
+.hideleft
+  margin-left:-1000px
+  margin-left:-50vw
+  opacity:0.5
+
+.itemlist .title > a
+  position:relative
+
+//.itemlist .title > a iframe
+//  position:absolute
+//  top:0
+//  left:150%
+//  height: 200%
+//  width: 600px
+//  background:white
+//  transition:height 0.5s, z-index 0s 0.5s
+//  z-index:2
+//.itemlist .title > a:hover iframe
+//  height: 600px;
+//  z-index:3
+//  transition:height 0.5s
+.itemlist .title > a iframe
+  position:fixed
+  top:0
+  left:50%
+  width:50%
+  height:100%
+  background:rgb(255,255,255,0.5)
+  z-index:2
+
+.hidden
+  display:none !important
+//.itemlist .title > a iframe
+//  visibility:visible
+  
+  

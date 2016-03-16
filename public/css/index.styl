@@ -1,0 +1,699 @@
+@require "custom/font-awesome/css/font-awesome.min.css"
+@require "base"
+@require "header"
+@require "menu"
+
+$progressSize=300px
+$headerheight = 60px
+$cubeheight = 80px
+.progress
+  height: inherit
+  min-width: $progressSize //temporary value stops sudden move upon page load
+
+  .wrapper
+    position: absolute
+    left: 50%
+    top: 50%
+    padding: 0px
+    margin: 0px
+    transform: translate(-50%, -50%)
+
+    h3.title
+      font-size:40px
+    p.count
+      font-size:20px
+    
+.progress > svg
+  height: 100%
+  display: block
+
+
+// Latest Deployment
+//-------------------
+.stat
+  height:$progressSize
+  position:relative
+  display:inline-block
+  margin-left:10px
+  margin-right:10px
+
+.deployed .wrapper
+  color: #55bbff
+.opened .wrapper
+  color: #ee5522
+.clicked .wrapper
+  color: #ffbb33
+
+.loremipsum
+  padding: 100px 0
+
+#cover
+  position:absolute
+  top:0
+  left:0
+  right:0
+  bottom:0
+  display:block
+  background:#660
+  opacity:0
+  opacity:0.1
+  z-index:1
+
+#emailpreview, #cmemailpreview
+  width: 100%;
+  min-height: 600px;
+  box-shadow: 0 0 20px #aaa;
+  margin-top: 50px;
+  margin-bottom:50px
+
+h1
+  margin-bottom:20px
+
+table.cluster
+  margin:0 auto
+  margin-top:20px
+  border-collapse: collapse
+  width:100%
+  
+  thead
+    border-bottom:1px solid #aaa
+    tr 
+      border-bottom:1px solid #aaa
+    th.first
+      border-right:1px solid #aaa
+  th, td
+    padding:5px 10px
+  tbody
+    tr
+      border-top:1px solid #ccc
+      cursor:pointer
+    tr:hover
+      background:#eee
+    td:hover
+      background:#660
+      color:white
+    th
+      border-right:1px solid #aaa
+      text-align:right
+
+// Engagement Statistics
+//-----------------------
+.segments
+  .segment
+    display:inline-block
+    border-radius:10px
+    box-shadow:0 0 15px #aaa
+    margin:5px
+    background:#fff
+    color:inherit
+    padding:5px 10px
+    position:relative
+    cursor:pointer
+    
+    div.image
+      height:60px
+      width:60px
+      display:inline-block
+      overflow:hidden
+      border-radius:50%
+      img
+        height:60px
+        margin:0 auto
+
+    .h3ghost
+      position: relative
+      display: inline-block
+      margin-left:5px
+    .h3ghost::before
+      content: " ";
+      display: inline-block;
+      height: 100%;
+      width: 1%;
+      vertical-align: middle;
+      h3 
+        height:100%
+        color:black
+
+  .segment:hover
+    background:#eee
+
+#engagementchart
+  height: 400px
+
+#engagementcharttoggle
+  padding:10px
+  border-radius: 4px
+  box-shadow: 0 0 10px #555
+  background: #5c0
+  transition: background 0.3s
+  color:white
+  display:inline-block
+  margin:10px auto
+  cursor:pointer
+
+#engagementcharttoggle:hover
+  background:#3a0
+    
+#engagementcharttoggle.displaypercentage
+  background:#5ae
+
+#engagementcharttoggle.displaypercentage:hover
+  background:#38d
+
+
+// Heatmap
+//---------
+#heatmap
+  height:100%
+  box-shadow:0 0 20px #333
+  margin-bottom:50px
+
+// Profilestats
+//--------------
+
+@keyframes gearclick
+  0%
+    transform: rotate(0deg);
+  30%
+    transform: rotate(0deg);
+  60%
+    transform: rotate(50deg);
+  73%
+    transform: rotate(41deg);
+  78%
+    transform: rotate(47deg);
+  82%
+    transform: rotate(45deg);
+  100%
+    transform: rotate(45deg);
+
+@keyframes rotating
+  0%
+    transform: rotate(0deg);
+  35%
+    transform: rotate(180deg);
+  50%
+    transform: rotate(360deg);
+  75%
+    transform: rotate(720deg);
+  100%
+    transform: rotate(1080deg);
+
+.filtering
+  #loadingmessage
+    .message
+      padding-right:10px
+      font-style:italic
+    .rotatingbox
+      width:40px
+      height:40px
+      font-size:42px
+      margin-top:-10px
+      //-webkit-animation: rotating 2s linear infinite;
+      //-moz-animation: rotating 2s linear infinite;
+      //-ms-animation: rotating 2s linear infinite;
+      //-o-animation: rotating 2s linear infinite;
+      animation: gearclick 1.5s linear infinite;
+  #loadingmessage.done
+    .rotatingbox
+      animation: rotating 1s linear infinite;
+
+.subgroupcharts
+  > div
+    display:inline-block
+  #leftgrouppopulation, #rightgrouppopulation
+    font-size:15px
+    color:#555
+    margin:0 5px
+  #leftgroupprofilechart
+    width:47%
+  #rightgroupprofilechart
+    width:53%
+#profilechart
+  margin-bottom:50px
+.filtering
+  position:relative
+  text-align:left
+
+  .popupelement
+    padding-left:10px
+    font-size:20px
+    margin-top:30px
+    margin-bottom:-30px
+
+    .popup
+      transition: opacity 0.4s, visibility 0.4s
+      opacity:0
+      //margin-left:-100px
+      box-shadow:0 0 10px #aaa
+      padding:10px
+      background:white
+      position:absolute
+      top:0
+      left:0
+      right:0
+      z-index:1
+
+    .advanced
+      font-size:10px
+      color: #888
+      font-style: italic
+      opacity: 0
+      transition: opacity 0.2s, margin-top 0.2s, margin-bottom 0.2s
+      margin-top:-10px
+      margin-bottom:10px
+
+  .popupelement:hover
+    .popup
+      transition: opacity 0.4s 0.4s, visibility 0.4s 0.4s
+      visibility:visible
+      opacity:1
+      margin-left:0
+    .advanced
+      opacity: 1
+      margin-top:5px
+      margin-bottom:-5px
+
+#pageerrorcover
+  position:fixed
+  top:0
+  left: 0
+  right: 0
+  bottom:0
+  z-index:10
+  background:rgba(50,50,50,0.3)
+  p
+    position:absolute
+    top: 300px
+    left:0
+    right:0
+    font-size:30px
+    color:#f40
+    text-shadow: 0 0 5px #fff
+
+
+// Filterpage
+//------------
+$filterfontsize=14px
+$filterheight=20px
+$popupwidth=150px
+$trianglesize=15px
+
+h2.listoffiltersheading
+  margin-top:20px
+  margin-bottom:20px
+  font-size:($filterfontsize*3/2)
+  border-bottom:1px solid #aaa
+div.listoffiltersheading
+  .fitem
+    display:inline-block
+    font-size:($filterfontsize*4/3)
+div.listoffilters
+  li
+    display:block
+    padding:4px
+    position:relative;
+    background:#fafafa
+  li:hover
+    background:#eee
+  .fitem
+    display:inline-block
+    height:$filterheight
+  input
+    width:100%
+    border:none
+    border-bottom:1px solid #aaa
+    background:none
+    height:($filterheight - 1)
+    border-radius:4px
+    padding:4px 8px
+  select
+    -webkit-appearance: menulist-button
+    height:$filterheight
+  *
+    font-size:$filterfontsize
+    box-sizing:border-box
+  .adder
+    width:100%
+    height:100%
+    cursor:pointer
+    color:green
+    position:relative
+    i
+      line-height:$filterheight
+      width:100%
+      font-size:($filterheight - 4)
+      transition:text-shadow 0.2s
+    .fa-minus
+      color:#e55
+    i:hover
+      text-shadow:0 0 30px green
+    i.fa-minus:hover
+      text-shadow:0 0 30px #e55
+    .infopopup
+      color:#fff;
+      background:#555;
+      position:absolute;
+      top:(- $filterheight - $trianglesize)
+      left:50%;
+      margin-left:(- $popupwidth/2)
+      height:$filterheight
+      box-sizing:border-box
+      width:$popupwidth
+      line-height:$filterheight
+      visibility:hidden
+      opacity:0
+      transition:opacity 0.5s
+      border-radius:4px
+      font-size: ($filterfontsize * 4 / 5)
+    .infopopup:after
+      content:"";
+      position:absolute;
+      bottom:-$trianglesize; /* value = - border-top-width - border-bottom-width */
+      left:($popupwidth/2 - $trianglesize); /* controls horizontal position */
+      border-width:$trianglesize $trianglesize 0;
+      border-style:solid;
+      border-color:#555 transparent;
+      /* reduce the damage in FF3.0 */
+      display:block;
+      width:0;
+  //.adder:hover
+  //  .infopopup
+  //    visibility:visible
+  //    opacity:1
+.l07
+  width:7%
+.l10
+  width:10%
+.l20
+  width:20%
+.l30
+  width:30%
+.l40
+  width:40%
+.l43
+  width:43%
+.l50
+  width:50%
+.l60
+  width:60%
+
+.limit70
+  width:70%
+div.searchlist
+  height:300px
+  overflow-y:auto
+input.searchbox
+  min-height:25px
+  line-height:25px
+  border:1px solid #eee
+  padding:5px
+  font-size:20px
+  width:100%
+  box-sizing: border-box
+  outline:none
+input.searchbox:focus
+  outline:none
+  box-shadow: 0 0 10px #555
+input.searchbox:active
+  box-shadow: 0 0 10px #555
+div.searchbox:empty:not(:focus):before
+  //[contentEditable=true]:empty:not(:focus):before
+  content:attr(placeholder)
+button.search
+  background: #59f
+  width: 100px
+  height: 50px
+  line-height:50px
+  border:none
+  font-size:20px
+  color:white
+  cursor:pointer
+  box-shadow: 0 0 10px #aaa
+  border-radius:4px
+  display:block
+  margin:20px auto
+button.search:hover
+  background:#35a
+.w40
+  width:40%
+div.half
+  //height:400px
+  width:45%
+  display: inline-block
+  margin:10px
+.isnottagged
+  border-radius:3px
+  border:1px solid #555
+  margin: 5px
+  display:inline-block
+  padding:5px
+  cursor:pointer
+  transition:all 0.5s
+.isnottagged.active
+  background:#f55
+  //border:1px solid #eee
+  color:white
+.toggle
+  display:inline-block
+  cursor:pointer
+  margin:0 15px 10px
+  border-radius:4px
+  
+  .toggle-top,.toggle-bottom
+    padding:5px 10px
+    border:2px solid #acf
+    box-sizing:border-box
+  .toggle-top:hover,.toggle-bottom:hover
+    background:#5bf
+    color:white
+    border:none
+    padding:7px 12px
+  .toggle-top.active,.toggle-bottom.active
+    background:#38e
+    color:white
+    border:none
+    padding:7px 12px
+
+  .toggle-top:active,.toggle-bottom:active
+    background:#3cf
+    color:white
+    border:none
+    padding:7px 12px
+
+  .toggle-top
+    border-radius:4px 4px 0 0
+    border-bottom:none
+  .toggle-top:hover,.toggle-top.active,.toggle-top:active
+    padding:6px 12px
+  .toggle-bottom
+    border-radius:0 0 4px 4px
+
+
+// Content Manager
+//-----------------
+.red
+  color:#e33
+.green
+  color:#5c0
+
+.loadinggear
+  width:100px
+  height:100px
+  font-size:102px
+  animation: gearclick 1.5s linear infinite;
+.loadinggear.done
+  animation: rotating 1s linear infinite;
+
+h1.comms
+  border-bottom:1px solid #eeeeee
+#commtable
+  text-align:left
+#commtable input
+  font-size:100%
+  padding:4px 4px
+  margin:4px
+  min-width:30%
+table.comms
+  margin:0 auto
+  border-collapse: collapse
+  width:100%
+  
+  th
+    border-bottom:1px solid #aaaaaa
+  th, td
+    padding:5px 10px
+  tbody
+    tr
+      border-top:1px solid #eee
+      cursor:pointer
+    tr:hover
+      background:#dddddd
+    //td:hover
+    //  background:#666600
+    //  color:white
+  tr
+
+    .slidehidden
+      max-width:0
+      padding-left:-10px
+      overflow-x:hidden
+      color:#888
+      display:inline-block
+      transition:max-width 0.4s, margin 0.4s
+
+    .openrate
+      position:relative
+      .hintcontainer
+        visibility:hidden
+        opacity: 0
+        position: absolute
+        top: -35px
+        left:-100px
+        right:-100px
+        transition: opacity 0.2s
+
+        .hint
+          white-space:nowrap
+          padding:5px
+          background:#555
+          box-shadow:0 0 5px #888
+          border-radius:5px
+          display:inline-block
+          color:white
+  tr:hover
+    .slidehidden
+      max-width:50px
+      padding-left:10px
+    .openrate:hover
+      .hintcontainer
+        visibility:visible
+        opacity:1
+      .hintcontainer:hover
+        visibility:hidden
+        opacity:0
+        
+        
+      
+  tr:nth-child(even)
+    background-color: #eeeeee;
+
+// Popup
+section.popup.comms
+  display:block
+  position:fixed
+  top:$headerheight
+  left:0
+  right:0
+  bottom:0
+  background:rgba(240,240,240,0.9)
+  z-index:1
+  section.deployment
+    //width:40%
+    width:100%
+    height:100%
+    box-sizing:border-box
+    padding:0 5%
+    overflow-y:auto
+    display:inline-block
+    div.stat
+      margin-top:20px
+    h2
+      font-size:30px
+      padding:20px 5px 0
+      margin-bottom:20px
+      border-bottom:1px solid #aaa
+      display:inline-block
+    h3.segment
+      border-bottom:1px solid #660
+      margin:0 auto
+    table.segment
+      margin:0 auto
+      td,th
+        padding:5px 10px
+  div.preview
+    //width:90%
+    margin: 0 auto
+  section.close
+    position:fixed
+    z-index:11
+    top:($headerheight+20px)
+    right:20px
+    width:30px
+    height:30px
+    border-radius:50%
+    border:4px solid #a00
+    box-sizing:border-box
+    box-shadow:0 0 3px #a00, inset 0 0 3px #a00
+    color:#a00
+    font-size:18px
+    line-height:22px
+    opacity:0.5
+    transition:opacity 0.5s, color 0.5s, border 0.5s
+    cursor:pointer
+  section.close:hover
+    opacity:1
+    color:#e00
+    border:4px solid #e00
+    box-shadow:0 0 8px #e00,insert 0 0 3px #e00
+    text-shadow:0 0 2px #e00
+section.popup.comms.hide
+  display:none
+
+div.p4
+  width:25%
+  display:inline-block
+
+div.p5
+  width:20%
+  display:inline-block
+
+section.geography
+  margin-top:20px
+
+// ConsoleAppLog
+//--------------
+h1.dbtable
+  border-bottom:1px solid #eeeeee
+  //box-shadow: 0 10px 10px -10px gray;
+table.dbtable
+  margin:0 auto
+  border-collapse: collapse
+  
+  th
+    border-bottom:1px solid #aaaaaa
+    font-weight:bold
+  th, td
+    padding:5px 10px
+  tbody
+    tr
+      border-top:1px solid #eee
+      transition:background 0.5s
+    //tr:hover
+    //  //background:#eeeeee
+    //  color:black
+    td:hover
+      background:#666600
+      color:white
+    tr div
+      white-space:pre-wrap
+      unicode-bidi: embed
+  //tr.loglevel1 //do nothing
+  tr div
+    max-height:40px
+    overflow:hidden
+    transition:max-height 0.5s
+  tr div:hover
+    max-height:500px
+    overflow-y:auto
+  tr.loglevel2
+    background:#eeeeee
+  tr.loglevel3
+    background:#dddddd
+  tr.loglevel4
+    background:orange
+    color:white
+  tr.loglevel5
+    background:#ee0000
+    color:white
+    

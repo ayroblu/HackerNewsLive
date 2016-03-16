@@ -1,0 +1,118 @@
+//.leftmenu
+//  width: 300px /* Dependent */
+//  position: fixed
+//  top: 100px
+//  left: 0 
+//  bottom: 0
+//  z-index: 1 /* so the menu or its navicon stays above all content */
+//  overflow-y: auto
+//  overflow-x: visible
+//  -webkit-overflow-scroll: touch /* for smooth scrolling on mobile */
+//
+//  .menuitems
+//    width:250px /* Dependent */
+//    height:100%
+//    background: #fff
+//    overflow-y:scroll
+//
+//    box-shadow: 2px 0 10px 0 #aaa
+//
+//    > ul
+//      min-height: 100%
+//      font-size:1.2em
+//      /*line-height:50px*/
+//      color:#000
+//      text-align:left
+//
+//  a
+//    display:block
+//    color:inherit
+//    border-bottom:1px solid #aaa
+//    padding-left:5%
+//    padding:2px 0 2px 5%
+//    text-align:left
+//
+//  .header
+//    color:#fff
+//    font-weight:bold
+//    font-size:25px
+//    line-height:60px
+//
+//
+//  .overhang
+//    height:100%
+//    top:0
+//    bottom:0
+//    left:250px /* Dependent */
+//    width:50px /* Dependent */
+//    position:absolute
+//
+//
+///* ---------------------------------------------------Javascript class switch */
+//.leftmenu.menu-hidden 
+//  left: -250px /* Dependent */
+//
+//.leftmenu.menu-hidden .overhang
+//  background: rgba(80,80,80,0.02)
+//
+////.leftmenu.menu-hidden.enabled:hover
+////  /*left: 0*/
+//
+//.leftmenu.menu-hidden:hover .overhang
+//  background: transparent
+//
+///* -- Responsive Styles (Media Queries) ------------------------------------- */
+//@media (max-width: 900px) 
+//  .leftmenu 
+//    left: -250px /* Dependent */
+//
+//    .overhang
+//      background: rgba(80,80,80,0.02)
+//    
+//    #closer
+//      display:none
+//  
+//  .leftmenu.menu-hidden 
+//    left: 0
+//
+//
+//@media (min-width: 600px) 
+//  .leftmenu
+//    transition: all 0.2s ease-out
+//  
+
+/* entire container, keeps perspective */
+.flip-container
+  margin: auto
+	max-width:900px
+  perspective: 1000px
+  position:relative
+
+/* flip the pane when hovered */
+.flip-container.hover .flipper
+  transform: rotateY(180deg)
+
+.front,.back
+  margin-left:1%
+
+/* flip speed goes here */
+.flipper 
+	transition: 0.2s
+	transform-style: preserve-3d
+
+/* hide back of pane during swap */
+.front,.back 
+	backface-visibility: hidden
+	position: absolute
+	top: 0
+	left: 0
+
+/* front pane, placed above back */
+.front 
+	z-index: 2
+
+/* back, initially hidden pane */
+.back 
+	transform: rotateY(180deg)
+
+
